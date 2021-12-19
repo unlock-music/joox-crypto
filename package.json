@@ -1,5 +1,5 @@
 {
-  "name": "joox-crypto",
+  "name": "@unlock-music/joox-crypto",
   "type": "commonjs",
   "version": "0.0.1",
   "description": "Crypto library to decrypt joox encrypted music files.",
@@ -12,6 +12,10 @@
     "test": "jest -w 50% src",
     "prepare": "simple-git-hooks"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": "git://github.com/unlock-music/joox-crypto.git",
   "keywords": [
     "joox"
   ],
