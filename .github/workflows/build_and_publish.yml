@@ -1,0 +1,24 @@
+name: Build and Publish
+on: [push, pull_request]
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest 
+    permissions: 
+      contents: read
+      packages: write 
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v2
+      - name: 🛠️ Configure Registry
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@unlock-music'
+      - name: 📦 Install Dependencies
+        run: npm ci
+      - name: 🚀 Publish Package
+        run: npm publish
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
