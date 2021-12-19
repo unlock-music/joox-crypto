@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+const DecryptorV4 = require("./src/crypto/DecryptorV4");
+const fs = require("fs");
+
+if (process.argv.length < 5) {
+  console.info(
+    "Usage: %s <uuidv2> <encrypted_path> <decrypted_path>",
+    process.argv[1]
+  );
+  return;
+}
+
+const [, , uuid, inputPath, outputPath] = process.argv;
+const inputBuffer = fs.readFileSync(inputPath);
+const decryptor = new DecryptorV4(uuid);
+const result = decryptor.decryptFile(inputBuffer);
+const outputHandle = fs.openSync(outputPath, "w");
+
+for (const block of result) {
+  fs.writeSync(outputHandle, block);
+}

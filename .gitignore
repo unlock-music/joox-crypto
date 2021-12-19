@@ -1,0 +1,7 @@
+*.flac
+*.ogg
+*.mp3
+
+coverage/
+node_modules/
+*.tgz
