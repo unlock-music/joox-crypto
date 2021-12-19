@@ -1,24 +1,15 @@
 const { Uint8ArrayEncoder } = require("./utils");
 const { getAESSecretKey, decryptAESBlock } = require("./AES");
 
-class DecryptorV4 {
-  static BLOCK_SIZE = 0x100000 /* data size */ + 0x10 /* padding */;
+const BLOCK_SIZE = 0x100000 /* data size */ + 0x10; /* padding */
 
+class DecryptorV4 {
   /**
    * Derive key from a given seed (user uuid 2)
    * @param {string} encryptionSeed
    */
   constructor(encryptionSeed) {
     this.aesKey = getAESSecretKey(encryptionSeed, null);
-  }
-
-  /**
-   * Detect if encryption is supported.
-   * @param {Uint8Array} fileBody File body for detection
-   */
-  static detect(fileBody) {
-    const magic = Uint8ArrayEncoder.toUTF8(fileBody.slice(0, 4));
-    return magic === "E!04";
   }
 
   /**
@@ -38,7 +29,7 @@ class DecryptorV4 {
     let bytesToDecrypt = fileBody.length;
     let i = /* magic */ 4 + /* orig_size */ 8;
     while (bytesToDecrypt > 0) {
-      const blockSize = Math.min(DecryptorV4.BLOCK_SIZE, bytesToDecrypt);
+      const blockSize = Math.min(BLOCK_SIZE, bytesToDecrypt);
       const block = fileBody.subarray(i, i + blockSize);
       const blockDecrypted = decryptAESBlock(this.aesKey, block);
       blocks.push(blockDecrypted);
@@ -49,5 +40,14 @@ class DecryptorV4 {
     return blocks;
   }
 }
+
+/**
+ * Detect if encryption is supported.
+ * @param {Uint8Array} fileBody File body for detection
+ */
+DecryptorV4.detect = (fileBody) => {
+  const magic = Uint8ArrayEncoder.toUTF8(fileBody.slice(0, 4));
+  return magic === "E!04";
+};
 
 module.exports = DecryptorV4;
