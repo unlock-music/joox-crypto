@@ -2,6 +2,7 @@ name: Build and Publish
 on: [push, pull_request]
 jobs:
   build_and_publish:
+    name: Build and Publish (on release)
     runs-on: ubuntu-latest 
     permissions: 
       contents: read
