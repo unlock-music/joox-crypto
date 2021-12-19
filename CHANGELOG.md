@@ -1,4 +1,10 @@
-## v0.0.1
+## v0.0.1-R3
+
+### Bug Fix
+
+- remove static modifier to work with elder babel
+
+## v0.0.1-R2
 
 ### New feature:
 
