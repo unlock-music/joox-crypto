@@ -12,10 +12,7 @@
     "test": "jest -w 50% src",
     "prepare": "simple-git-hooks"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
-  "repository": "git://github.com/unlock-music/joox-crypto.git",
+  "repository": "github:unlock-music/joox-crypto.git",
   "keywords": [
     "joox"
   ],
