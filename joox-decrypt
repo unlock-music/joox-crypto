@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const DecryptorV4 = require("./src/crypto/DecryptorV4");
+const jooxFactory = require(".");
 const fs = require("fs");
 
 if (process.argv.length < 5) {
@@ -12,7 +12,7 @@ if (process.argv.length < 5) {
 
 const [, , uuid, inputPath, outputPath] = process.argv;
 const inputBuffer = fs.readFileSync(inputPath);
-const decryptor = new DecryptorV4(uuid);
+const decryptor = jooxFactory(inputBuffer, uuid);
 const result = decryptor.decryptFile(inputBuffer);
 const outputHandle = fs.openSync(outputPath, "w");
 
