@@ -1,7 +1,7 @@
 {
-  "name": "@unlock-music-gh/joox-crypto",
+  "name": "@unlock-music/joox-crypto",
   "type": "commonjs",
-  "version": "0.0.1-R3",
+  "version": "0.0.1-R4",
   "description": "Crypto library to decrypt joox encrypted music files.",
   "main": "src/index.js",
   "types": "src/index.d.ts",

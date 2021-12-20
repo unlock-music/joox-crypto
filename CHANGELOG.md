@@ -1,3 +1,9 @@
+## v0.0.1-R4
+
+### Bug Fix
+
+- Change of package name back to `@unlock-music` namespace.
+
 ## v0.0.1-R3
 
 ### Bug Fix

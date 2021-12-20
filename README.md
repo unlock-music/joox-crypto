@@ -9,7 +9,7 @@ Joox 加密处理库。
 ## 安装 & 使用 (Install & Usage)
 
 ```sh
-npm i --save @unlock-music-gh/joox-crypto
+npm i --save @unlock-music/joox-crypto
 ```
 
 ```js
