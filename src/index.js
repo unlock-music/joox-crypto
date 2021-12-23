@@ -5,7 +5,7 @@ function jooxFactory(fileBody, seed) {
     return new DecryptorV4(seed);
   }
 
-  throw new Error("input file not supported or invalid");
+  return null;
 }
 
 module.exports = jooxFactory;
