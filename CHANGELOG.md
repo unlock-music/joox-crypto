@@ -1,3 +1,9 @@
+## v0.0.1-R5
+
+### Bug Fix
+
+- Return null instead of throw an error on unsupported file.
+
 ## v0.0.1-R4
 
 ### Bug Fix
